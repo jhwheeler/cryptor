@@ -27,7 +27,8 @@ export const getFrequency = (items: string) => {
       [letter]: {
         count: getCount(totals, letter),
         frequency: totals[letter]
-          ? `${Math.round((totals[letter].count / items.length) * 1e3) / 10}%`
+          ? `${Math.round((getCount(totals, letter) / items.length) * 1e3) /
+              10}%`
           : `${Math.round((1 / items.length) * 1e3) / 10}`
       }
     }),
