@@ -36,8 +36,11 @@ const analyse = () => {
     const texts = splitText(ciphertext, keywordLength);
     console.log("\nIndividual ciphertexts:");
     texts.forEach((text, index) => {
+      const formattedText = formatText(text);
       console.log(`\nText ${index}:`);
-      jsome(text);
+      console.log(formattedText, "\n");
+      const analysis = mono(formattedText);
+      jsome(analysis);
     });
   }
 
