@@ -4,15 +4,15 @@ export const getCount = (totals: Results, item: string): number => {
   return ((totals[item] && totals[item].count) || 0) + 1;
 };
 
-export const getAllIndexes = (arr, val) => {
-  const indexes = [];
+export const getAllIndices = (arr, val) => {
+  const indices = [];
 
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === val) {
-      indexes.push(i);
+      indices.push(i);
     }
   }
-  return indexes;
+  return indices;
 };
 
 export const formatText = (cipherText: string) => {

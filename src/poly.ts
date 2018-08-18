@@ -1,5 +1,5 @@
 import { Results } from "./types";
-import { getCount, getAllIndexes } from "./utils";
+import { getCount, getAllIndices } from "./utils";
 
 export const poly = (ciphertext: string) => {
   const sortSequences = (limit: number = 4): string[] => {
@@ -18,7 +18,7 @@ export const poly = (ciphertext: string) => {
 
     const count = getCount(totals, sequence);
     if (count > 1) {
-      const positions = getAllIndexes(sequences, sequence);
+      const positions = getAllIndices(sequences, sequence);
       distances = positions.reduce((prevPosition, currPosition) => {
         const distance = currPosition - prevPosition;
         distances.push(distance);
