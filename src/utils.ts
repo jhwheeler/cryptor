@@ -1,3 +1,7 @@
+export const onlyUnique = (value, index, self) => {
+  return self.indexOf(value) === index;
+};
+
 export const formatText = (cipherText: string) => {
   console.log("Cipher Text:\n ", cipherText);
   const string = cipherText.replace(/[^A-Za-z]+/g, "").toUpperCase();
@@ -6,7 +10,7 @@ export const formatText = (cipherText: string) => {
 };
 
 export const getFrequency = (items: string[]) => {
-  const frequencies = items.reduce(
+  return items.reduce(
     (totals, item) => ({
       ...totals,
       [item]: {
@@ -18,6 +22,4 @@ export const getFrequency = (items: string[]) => {
     }),
     {}
   );
-
-  return frequencies;
 };
