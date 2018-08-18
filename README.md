@@ -2,7 +2,7 @@
 
 ## Simple utilities for basic cryptanalysis
 
-- Currently supports monoalphabetic substitution ciphers and polyalphabetic Vigenere ciphers
+Currently supports monoalphabetic substitution ciphers and polyalphabetic Vigenere ciphers
 
 ### How To Use
 
