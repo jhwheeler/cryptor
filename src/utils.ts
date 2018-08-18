@@ -1,19 +1,19 @@
 export const formatText = (cipherText: string) => {
   console.log("Cipher Text:\n ", cipherText);
   const string = cipherText.replace(/[^A-Za-z]+/g, "").toUpperCase();
-  const letters = string.split("").sort();
-  return letters;
+  const items = string.split("").sort();
+  return items;
 };
 
-export const getFrequency = (letters: string[]) => {
-  const frequencies = letters.reduce(
-    (totals, letter) => ({
+export const getFrequency = (items: string[]) => {
+  const frequencies = items.reduce(
+    (totals, item) => ({
       ...totals,
-      [letter]: {
-        count: ((totals[letter] && totals[letter].count) || 0) + 1,
-        frequency: totals[letter]
-          ? `${Math.round((totals[letter].count / letters.length) * 1e3) / 10}%`
-          : `${Math.round((1 / letters.length) * 1e3) / 10}`
+      [item]: {
+        count: ((totals[item] && totals[item].count) || 0) + 1,
+        frequency: totals[item]
+          ? `${Math.round((totals[item].count / items.length) * 1e3) / 10}%`
+          : `${Math.round((1 / items.length) * 1e3) / 10}`
       }
     }),
     {}
