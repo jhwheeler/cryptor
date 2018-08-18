@@ -1,7 +1,7 @@
 import { Results } from "./types";
 import { getCount, getAllIndexes } from "./utils";
 
-export const vigenere = (ciphertext: string) => {
+export const poly = (ciphertext: string) => {
   const sortSequences = (limit: number = 4): string[] => {
     const regexString: string = `.{1,${limit}}`;
     const regex: RegExp = new RegExp(regexString, "gi");

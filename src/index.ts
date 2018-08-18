@@ -1,22 +1,35 @@
 import { readFileSync } from "fs";
 import * as jsome from "jsome";
 
-import { vigenere } from "./vigenere";
-import { monoalphabetic } from "./monoalphabetic";
+import { poly } from "./poly";
+import { mono } from "./mono";
 
-const cipherType = process.argv[2];
+const analyse = () => {
+  const cipherType = process.argv[2];
 
-const defaultFile = `./samples/${cipherType}-ciphertext.txt`;
-const input = process.argv.length > 3 ? process.argv[3] : defaultFile;
-const ciphertext = readFileSync(input, "utf-8");
+  if (cipherType !== "mono" && cipherType !== "poly") {
+    console.error(
+      "Unknown input. Please choose a cipher type: 'mono' for monoalphabetic or 'poly' for polyalphabetic."
+    );
+    return null;
+  }
 
-const result =
-  cipherType === "monoalphabetic"
-    ? monoalphabetic(ciphertext)
-    : "vigenere"
-      ? vigenere(ciphertext)
-      : "Unknown input. Please choose a cipher type: 'monoalphabetic' or 'vigenere'.";
+  const defaultFile = `./samples/${cipherType}alphabetic-ciphertext.txt`;
+  const input = process.argv.length > 3 ? process.argv[3] : defaultFile;
+  const ciphertext = readFileSync(input, "utf-8");
 
-console.log("Ciphertext:\n ", ciphertext);
-console.log("Analysis: ");
-jsome(result);
+  const result =
+    cipherType === "mono"
+      ? mono(ciphertext)
+      : "poly"
+        ? poly(ciphertext)
+        : "Unknown input. Please choose a cipher type: 'mono' or 'poly'.";
+
+  console.log("Ciphertext:\n ", ciphertext);
+  console.log("Analysis: ");
+  jsome(result);
+
+  return result;
+};
+
+analyse();
