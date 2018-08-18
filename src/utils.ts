@@ -8,6 +8,17 @@ export const getCount = (totals: Results, item: string): number => {
   return ((totals[item] && totals[item].count) || 0) + 1;
 };
 
+export const getAllIndexes = (arr, val) => {
+  const indexes = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === val) {
+      indexes.push(i);
+    }
+  }
+  return indexes;
+};
+
 export const formatText = (cipherText: string) => {
   console.log("Cipher Text:\n ", cipherText);
   const string = cipherText.replace(/[^A-Za-z]+/g, "").toUpperCase();
