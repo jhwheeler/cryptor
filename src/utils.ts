@@ -1,9 +1,5 @@
 import { Results } from "./types";
 
-export const onlyUnique = (value, index, self) => {
-  return self.indexOf(value) === index;
-};
-
 export const getCount = (totals: Results, item: string): number => {
   return ((totals[item] && totals[item].count) || 0) + 1;
 };
@@ -20,7 +16,6 @@ export const getAllIndexes = (arr, val) => {
 };
 
 export const formatText = (cipherText: string) => {
-  console.log("Cipher Text:\n ", cipherText);
   const string = cipherText.replace(/[^A-Za-z]+/g, "").toUpperCase();
   const items = string.split("").sort();
   return items;

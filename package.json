@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "start": "node build",
-    "vigenere": "node build/vigenere"
+    "analyse": "node build"
   },
   "dependencies": {
     "@types/node": "^10.7.1",

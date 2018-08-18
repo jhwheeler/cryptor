@@ -1,12 +1,22 @@
 import { readFileSync } from "fs";
-import { formatText, getFrequency } from "./utils";
+import * as jsome from "jsome";
 
-const input =
-  process.argv.length > 2
-    ? process.argv[2]
-    : "./samples/monoalphabetic-ciphertext.txt";
-const cipherText = readFileSync(input, "utf-8");
-const formattedText = formatText(cipherText);
+import { vigenere } from "./vigenere";
+import { monoalphabetic } from "./monoalphabetic";
 
-const frequencies = getFrequency(formattedText);
-console.log("Frequencies: \n", frequencies);
+const cipherType = process.argv[2];
+
+const defaultFile = `./samples/${cipherType}-ciphertext.txt`;
+const input = process.argv.length > 3 ? process.argv[3] : defaultFile;
+const ciphertext = readFileSync(input, "utf-8");
+
+const result =
+  cipherType === "monoalphabetic"
+    ? monoalphabetic(ciphertext)
+    : "vigenere"
+      ? vigenere(ciphertext)
+      : "Unknown input. Please choose a cipher type: 'monoalphabetic' or 'vigenere'.";
+
+console.log("Ciphertext:\n ", ciphertext);
+console.log("Analysis: ");
+jsome(result);
