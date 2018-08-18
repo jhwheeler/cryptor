@@ -4,7 +4,9 @@ import { getCount } from "./utils";
 import { Results } from "./types";
 
 const input =
-  process.argv.length > 2 ? process.argv[2] : "./samples/vigenere.txt";
+  process.argv.length > 2
+    ? process.argv[2]
+    : "./samples/vigenere-ciphertext.txt";
 const cipherText = readFileSync(input, "utf-8");
 
 const sortSequences = (limit: number = 4): string[] => {
