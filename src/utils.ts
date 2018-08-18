@@ -1,15 +1,11 @@
-import { readFileSync } from "fs";
-
-const cipherText = readFileSync("./ciphertext.txt", "utf-8");
-
-const formatText = (cipherText: string) => {
+export const formatText = (cipherText: string) => {
   console.log("Cipher Text:\n ", cipherText);
   const string = cipherText.replace(/[^A-Za-z]+/g, "").toUpperCase();
   const letters = string.split("").sort();
   return letters;
 };
 
-const getFrequency = (letters: string[]) => {
+export const getFrequency = (letters: string[]) => {
   const frequencies = letters.reduce(
     (totals, letter) => ({
       ...totals,
@@ -23,9 +19,5 @@ const getFrequency = (letters: string[]) => {
     {}
   );
 
-  console.log("Frequencies:\n ", frequencies);
+  return frequencies;
 };
-
-const formattedText = formatText(cipherText);
-
-getFrequency(formattedText);
