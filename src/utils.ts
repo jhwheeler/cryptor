@@ -16,22 +16,39 @@ export const getAllIndices = (arr, val) => {
 };
 
 export const formatText = (cipherText: string) => {
-  const string = cipherText.replace(/[^A-Za-z]+/g, "").toUpperCase();
-  const items = string.split("").sort();
-  return items;
+  return cipherText.replace(/[^A-Za-z]+/g, "").toUpperCase();
 };
 
-export const getFrequency = (items: string[]) => {
-  return items.reduce(
-    (totals, item) => ({
+export const getFrequency = (items: string) => {
+  const letters = items.split("").sort();
+  return letters.reduce(
+    (totals, letter) => ({
       ...totals,
-      [item]: {
-        count: getCount(totals, item),
-        frequency: totals[item]
-          ? `${Math.round((totals[item].count / items.length) * 1e3) / 10}%`
+      [letter]: {
+        count: getCount(totals, letter),
+        frequency: totals[letter]
+          ? `${Math.round((totals[letter].count / items.length) * 1e3) / 10}%`
           : `${Math.round((1 / items.length) * 1e3) / 10}`
       }
     }),
     {}
   );
+};
+
+export const splitText = (
+  ciphertext: string,
+  keywordLength: number
+): string[] => {
+  const texts: string[] = [];
+  const letters = ciphertext.split("");
+
+  for (let i = 0; i < keywordLength; i++) {
+    const monoAlphabeticCiphertext = letters
+      .filter((letter, index) => (index - i) % keywordLength === 0)
+      .toString()
+      .trim();
+    texts.push(monoAlphabeticCiphertext);
+  }
+
+  return texts;
 };

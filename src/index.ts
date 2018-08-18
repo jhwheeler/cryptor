@@ -3,6 +3,7 @@ import * as jsome from "jsome";
 
 import { poly } from "./poly";
 import { mono } from "./mono";
+import { formatText, splitText } from "./utils";
 
 const analyse = () => {
   const cipherType = process.argv[2];
@@ -16,7 +17,8 @@ const analyse = () => {
 
   const defaultFile = `./samples/${cipherType}alphabetic-ciphertext.txt`;
   const input = process.argv.length > 3 ? process.argv[3] : defaultFile;
-  const ciphertext = readFileSync(input, "utf-8");
+  const file = readFileSync(input, "utf-8");
+  const ciphertext = formatText(file);
 
   const result =
     cipherType === "mono"
@@ -25,9 +27,15 @@ const analyse = () => {
         ? poly(ciphertext)
         : "Unknown input. Please choose a cipher type: 'mono' or 'poly'.";
 
-  console.log("Ciphertext:\n ", ciphertext);
+  console.log("Ciphertext:\n ", file);
   console.log("Analysis: ");
   jsome(result);
+
+  if (cipherType === "poly" && process.argv.length > 4) {
+    const keywordLength = parseInt(process.argv[4]);
+    const texts = splitText(ciphertext, keywordLength);
+    console.log("Individual ciphertexts: \n", texts);
+  }
 
   return result;
 };

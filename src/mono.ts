@@ -1,7 +1,5 @@
-import { formatText, getFrequency } from "./utils";
+import { getFrequency } from "./utils";
 
 export const mono = (ciphertext: string) => {
-  const formattedText = formatText(ciphertext);
-
-  return getFrequency(formattedText);
+  return getFrequency(ciphertext);
 };
