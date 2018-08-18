@@ -1,21 +1,53 @@
 import { readFileSync } from "fs";
-import { getFrequency } from "./utils";
+
+interface Statistic {
+  count: number;
+  distances: number[];
+}
+
+type Results = { [sequence: string]: Statistic };
 
 const input = process.argv.length > 2 ? process.argv[2] : "vigenere.txt";
 const cipherText = readFileSync(input, "utf-8");
 
-const results = [];
+const sortSequences = (limit: number = 4): string[] => {
+  const regexString: string = `.{1,${limit}}`;
+  const regex: RegExp = new RegExp(regexString, "gi");
 
-for (let i = 0; i < cipherText.length; i++) {
-  const limit = 4;
-  const regexString = `.{1,${limit}}`;
-  const regex = new RegExp(regexString, "gi");
+  return cipherText.match(regex);
+};
 
-  const matches = cipherText.match(regex);
-  const searchParam = new RegExp(`${matches[i]}`, "gi");
-  const search = cipherText.match(searchParam);
+const getDistances = (items: string[], item: string): number[] => {
+  // TODO: calculate distances between instances of item
+  return [0];
+};
 
-  results.push(search);
-}
+const getStats = (items: string[]): Results => {
+  return items.reduce(
+    (totals, item) => ({
+      ...totals,
+      [item]: {
+        count: ((totals[item] && totals[item].count) || 0) + 1,
+        distances: getDistances(items, item)
+      }
+    }),
+    {}
+  );
+};
 
-console.log(results);
+const filterSingleInstances = (stats: Results) => {
+  const nonSingleInstances = Object.keys(stats).filter(
+    statistic => stats[statistic].count > 1
+  );
+
+  return nonSingleInstances.reduce((obj, key) => {
+    obj[key] = stats[key];
+    return obj;
+  }, {});
+};
+
+const sequences = sortSequences(4);
+const stats = getStats(sequences);
+const filteredStats = filterSingleInstances(stats);
+
+console.log(filteredStats);
