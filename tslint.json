@@ -1,0 +1,36 @@
+{
+  "extends": ["tslint:latest", "tslint-react", "tslint-config-prettier"],
+  "rules": {
+    "no-console": [true, ["debug", "info"]],
+    "interface-name": false,
+    "object-literal-sort-keys": false,
+    "no-implicit-dependencies": false,
+    "no-duplicate-imports": false,
+    "no-submodule-imports": false,
+    "member-ordering": {
+      "severity": "warn",
+      "options": {
+        "order": [
+          "public-static-field",
+          "public-instance-field",
+          "public-constructor",
+          "private-static-field",
+          "private-instance-field",
+          "private-constructor",
+          "public-instance-method",
+          "protected-instance-method",
+          "private-instance-method"
+        ]
+      }
+    },
+    "ordered-imports": {
+      "severity": "warn"
+    },
+    "jsx-no-lambda": {
+      "severity": "warn"
+    },
+    "jsx-boolean-value": {
+      "severity": "warn"
+    }
+  }
+}
