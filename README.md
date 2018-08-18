@@ -2,7 +2,7 @@
 
 ## Simple utilities for basic cryptanalysis
 
-Currently supports monoalphabetic substitution ciphers and polyalphabetic Vigenere ciphers
+These tools are designed to help budding cryptanalysts learn the building blocks of cryptography and cryptanalysis. Currently supports monoalphabetic substitution ciphers and polyalphabetic Vigenere ciphers.
 
 ### How To Use
 
