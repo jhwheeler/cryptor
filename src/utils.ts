@@ -1,5 +1,11 @@
+import { Results } from "./types";
+
 export const onlyUnique = (value, index, self) => {
   return self.indexOf(value) === index;
+};
+
+export const getCount = (totals: Results, item: string): number => {
+  return ((totals[item] && totals[item].count) || 0) + 1;
 };
 
 export const formatText = (cipherText: string) => {
@@ -14,7 +20,7 @@ export const getFrequency = (items: string[]) => {
     (totals, item) => ({
       ...totals,
       [item]: {
-        count: ((totals[item] && totals[item].count) || 0) + 1,
+        count: getCount(totals, item),
         frequency: totals[item]
           ? `${Math.round((totals[item].count / items.length) * 1e3) / 10}%`
           : `${Math.round((1 / items.length) * 1e3) / 10}`

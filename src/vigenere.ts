@@ -1,11 +1,7 @@
 import { readFileSync } from "fs";
 
-interface Statistic {
-  count: number;
-  distances: number[];
-}
-
-type Results = { [sequence: string]: Statistic };
+import { getCount } from "./utils";
+import { Results } from './types'
 
 const input = process.argv.length > 2 ? process.argv[2] : "vigenere.txt";
 const cipherText = readFileSync(input, "utf-8");
@@ -19,6 +15,8 @@ const sortSequences = (limit: number = 4): string[] => {
 
 const getDistances = (items: string[], item: string): number[] => {
   // TODO: calculate distances between instances of item
+  // console.log('items', items)
+  // console.log('item', item)
   return [0];
 };
 
@@ -27,7 +25,7 @@ const getStats = (items: string[]): Results => {
     (totals, item) => ({
       ...totals,
       [item]: {
-        count: ((totals[item] && totals[item].count) || 0) + 1,
+        count: getCount(totals, item),
         distances: getDistances(items, item)
       }
     }),
@@ -46,8 +44,15 @@ const filterSingleInstances = (stats: Results) => {
   }, {});
 };
 
+// TODO: loop and increment limit param in `sortSequences`
 const sequences = sortSequences(4);
-const stats = getStats(sequences);
-const filteredStats = filterSingleInstances(stats);
+const stats = filterSingleInstances(getStats(sequences));
 
-console.log(filteredStats);
+console.log(stats);
+
+// for (let i = 0; i < cipherText.length / limit - 1; i++) {
+// const searchParam = new RegExp(`${sequences[i]}`, "gi");
+// const search = cipherText.match(searchParam);
+
+// results.push(search);
+// }
