@@ -1,4 +1,5 @@
 import { readFileSync } from "fs";
+import * as jsome from "jsome";
 
 import { Results } from "./types";
 import { getCount, getAllIndexes } from "./utils";
@@ -58,15 +59,15 @@ const filterSingleInstances = (stats: Results) => {
   }, {});
 };
 
-// TODO: loop and increment limit param in `sortSequences`
-const sequences = sortSequences(4);
-const stats = filterSingleInstances(getStats(sequences));
+const getResults = () => {
+  const results = [];
+  for (let i = 4; i < ciphertext.length - 1; i++) {
+    const sequences = sortSequences(i);
+    const stats = filterSingleInstances(getStats(sequences));
+    results.push(stats);
+  }
+  return results.filter(result => Object.keys(result).length !== 0);
+};
 
-console.log(stats);
-
-// for (let i = 0; i < ciphertext.length / limit - 1; i++) {
-// const searchParam = new RegExp(`${sequences[i]}`, "gi");
-// const search = ciphertext.match(searchParam);
-
-// results.push(search);
-// }
+const results = getResults();
+jsome(results);
