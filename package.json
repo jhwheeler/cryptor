@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "start": "node build",
+    "vigenere": "node build/vigenere"
+  },
   "dependencies": {
     "@types/node": "^10.7.1",
     "tslint": "^5.11.0",
