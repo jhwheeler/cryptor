@@ -34,7 +34,11 @@ const analyse = () => {
   if (cipherType === "poly" && process.argv.length > 4) {
     const keywordLength = parseInt(process.argv[4]);
     const texts = splitText(ciphertext, keywordLength);
-    console.log("Individual ciphertexts: \n", texts);
+    console.log("\nIndividual ciphertexts:");
+    texts.forEach((text, index) => {
+      console.log(`\nText ${index}:`);
+      jsome(text);
+    });
   }
 
   return result;
