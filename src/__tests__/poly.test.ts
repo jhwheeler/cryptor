@@ -27,6 +27,6 @@ describe("Polyalphabetic substitution output", () => {
       "KFJKKWMWFWSNKSKIAAWGFWYSYSJGWJAKDGMHZWGDEJWLSFWWMSSTZEKGSSVWYAEWMLWSWSDGWASKUMDMMATFXIDWWWTHWMMLWWJDWVJDDSAKKLWIWJKDYDUVU"
     );
     expect(analysis.A.count).toBe(7);
-    expect(analysis.A.frequency).toBe("5.8%");
+    expect(analysis.A.frequency).toBe(0.0579);
   });
 });
