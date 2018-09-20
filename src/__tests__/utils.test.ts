@@ -1,7 +1,4 @@
-// import { getCount } from "../utils";
-// import fs from "fs";
-
-import { getAllIndices, formatText } from "../utils";
+import { getAllIndices, formatText, getFrequency } from "../utils";
 
 describe("Utils", () => {
   it("Gets all indices", () => {
@@ -12,8 +9,14 @@ describe("Utils", () => {
   });
 
   it("Formats text", () => {
-    const toBeFormatted = "#€&\nHello \nWorld\r?!";
+    const toBeFormatted = "#€&\nHello \nWorld\r?!"; // Random characters to be cleaned up
     const formattedString = formatText(toBeFormatted);
     expect(formattedString).toEqual("HELLOWORLD");
+  });
+
+  it("Gets the frequency of a letter", () => {
+    const freq = getFrequency("FOO");
+    expect(freq["F"].count).toEqual(1);
+    expect(freq["O"].count).toEqual(2);
   });
 });
