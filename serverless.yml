@@ -11,8 +11,15 @@ provider:
 
 functions:
   postMonoalphabetic:
-    handler: src/service/handlers/post.handler
+    handler: src/service/handlers/post.monoHandler
     events:
       - http:
           method: post
           path: mono
+
+  postPolyalphabetic:
+    handler: src/service/handlers/post.polyHandler
+    events:
+      - http:
+          method: post
+          path: poly

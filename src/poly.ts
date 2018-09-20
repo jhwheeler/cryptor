@@ -1,5 +1,17 @@
 import { Results } from "./types";
-import { getCount, getAllIndices } from "./utils";
+import { getCount, getAllIndices, splitText, formatText } from "./utils";
+import { mono } from "./mono";
+
+export const splitAnalysis = (ciphertext, keywordLength) => {
+  const texts = splitText(ciphertext, keywordLength);
+  const arr = [];
+  texts.forEach((text, index) => {
+    const formattedText = formatText(text);
+    const analysis = mono(formattedText);
+    arr.push({ individualCipherText: formattedText, analysis });
+  });
+  return arr;
+};
 
 export const poly = (ciphertext: string) => {
   const sortSequences = (limit: number = 4): string[] => {
