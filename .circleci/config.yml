@@ -27,3 +27,9 @@ jobs:
       - run:
           name: Deploy application
           command: sls deploy --stage dev
+
+  test:
+    steps:
+      - run:
+          name: Run tests
+          command: yarn test
