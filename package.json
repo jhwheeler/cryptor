@@ -4,17 +4,24 @@
   "description": "Basic tools for learning cryptanalysis",
   "main": "handler.js",
   "scripts": {
-    "analyse": "node build"
+    "analyse": "node build",
+    "dev": "cross-env AWS_REGION=localhost serverless offline start --region localhost"
   },
   "devDependencies": {
     "@types/aws-lambda": "8.10.1",
     "@types/node": "^8.0.57",
+    "jsome": "^2.5.0",
+    "serverless-offline": "^3.25.12",
     "serverless-webpack": "^5.1.1",
+    "serverless": "^1.32.0",
     "source-map-support": "^0.5.6",
     "ts-loader": "^4.2.0",
     "tslint": "^5.11.0",
     "typescript": "^3.0.1",
     "webpack": "^4.5.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "glob": "^7.1.3"
+  }
 }
