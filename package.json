@@ -5,7 +5,7 @@
   "main": "handler.js",
   "scripts": {
     "analyse": "node build",
-    "dev": "cross-env AWS_REGION=localhost serverless offline start --region localhost"
+    "dev": "serverless offline start --region localhost"
   },
   "devDependencies": {
     "@types/aws-lambda": "8.10.1",
