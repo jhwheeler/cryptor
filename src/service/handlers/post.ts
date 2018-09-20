@@ -1,6 +1,7 @@
 import { APIGatewayEvent, Callback, Context, Handler } from "aws-lambda";
 
 import { mono } from "../../mono";
+import { formatText } from "../../utils";
 import { poly, splitAnalysis } from "../../poly";
 
 export const monoHandler: Handler = (
@@ -11,7 +12,7 @@ export const monoHandler: Handler = (
   const params = JSON.parse(event.body);
   const { ciphertext } = params;
 
-  const analysis = mono(ciphertext);
+  const analysis = mono(formatText(ciphertext));
 
   const response = {
     statusCode: 200,
