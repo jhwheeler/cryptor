@@ -25,11 +25,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
-          name: Deploy application
-          command: sls deploy --stage dev
-
-  test:
-    steps:
-      - run:
           name: Run tests
           command: yarn test
+
+      - run:
+          name: Deploy application
+          command: sls deploy --stage dev
