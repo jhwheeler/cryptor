@@ -4,15 +4,15 @@ service:
 # Add the serverless-webpack plugin
 plugins:
   - serverless-webpack
-
+  - serverless-offline
 provider:
   name: aws
   runtime: nodejs8.10
 
 functions:
-  hello:
-    handler: handler.hello
+  postMonoalphabetic:
+    handler: src/service/handlers/post.handler
     events:
       - http:
-          method: get
-          path: hello
+          method: post
+          path: mono
