@@ -1,6 +1,6 @@
 # Cryptor
 
-## Simple utilities for basic cryptanalysis
+## Simple utilities for learning basic cryptanalysis
 
 These tools are designed to help budding cryptanalysts learn the building blocks of cryptography and cryptanalysis. Currently supports monoalphabetic substitution ciphers and polyalphabetic Vigenere ciphers.
 
